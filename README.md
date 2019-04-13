@@ -33,24 +33,32 @@ dao new --environment aragon:rinkeby
  ✔ Fetching template bare-kit.aragonpm.eth@latest
  ✔ Create new DAO from template
  ✔ Checking DAO
- ✔ Created DAO: 0x9934E6c917675888D4E4747725A9d3c9B3f63AcD
+ ✔ Created DAO: 0x39044aA1C2A8F5D060502cF0340eFa8d0fdDbf07
 ```
 
-*YOUR DAO ADDRESS:* 0x9934E6c917675888D4E4747725A9d3c9B3f63AcD
+*YOUR DAO ADDRESS:* 0x39044aA1C2A8F5D060502cF0340eFa8d0fdDbf07
+
+```bash
+export ARAGON_DAO_ADDRESS=0x39044aA1C2A8F5D060502cF0340eFa8d0fdDbf07
+``
 
 ## Creating a Membership Token
 
 ```bash
-dao token new "Member" "MBR" 0
+dao token new "Member" "MBR" 0 --environment aragon:rinkeby
  ✔ Deploy the MiniMeTokenFactory contract
  ✔ Deploy the MiniMeToken contract
- ✔ Successfully deployed the token at 0xEE1cD10767c26F92634DaA26cC639A4bbb192E10
- ℹ Token transaction hash: 0x0f34dc350eb0386d66c51539790d40bee980fa94c4eaafa0ae670e7486d899fa
- ✔ Successfully deployed the token factory at 0x9310dC480CbF907D6A3c41eF2e33B09E61605531
- ℹ Token factory transaction hash: 0x806eeace2af41f70f445e37ae01818103d327c659af2d0ac39389e533e9de6c6
+ ✔ Successfully deployed the token at 0xc592A9C6Fa048e0459C0433133bc6d40FcD68068
+ ℹ Token transaction hash: 0x4ff5b0f5c90df2282af1eee266ccf0530c17305700a69d20d79ada7ab8d59363
+ ✔ Successfully deployed the token factory at 0x5c6A795C42a041Ebfd7Fb2AEB560b8D56351f479
+ ℹ Token factory transaction hash: 0x1b727af2dacf1bf83612d93ded107f648b2b4affd639c8c8fc7df4cd6e0ba2ac
 ```
 
-*YOUR TOKEN ADDRESS:* 0xEE1cD10767c26F92634DaA26cC639A4bbb192E10
+*YOUR TOKEN ADDRESS:* 0xc592A9C6Fa048e0459C0433133bc6d40FcD68068
+
+```bash
+export ARAGON_TOKEN_ADDRESS=0xc592A9C6Fa048e0459C0433133bc6d40FcD68068
+```
 
 ## Deploy the Token-Manager Instance
 
@@ -59,7 +67,7 @@ dao install <dao-address> token-manager --app-init none
 ```
 
 ```bash
-dao install 0x9934E6c917675888D4E4747725A9d3c9B3f63AcD token-manager --app-init none --environment aragon:rinkeby
+dao install $ARAGON_DAO_ADDRESS token-manager --app-init none --environment aragon:rinkeby
  ✔ Fetching token-manager.aragonpm.eth@latest
  ↓ Checking installed version [skipped]
    → Installing the first instance of token-manager.aragonpm.eth in DAO
@@ -69,8 +77,6 @@ dao install 0x9934E6c917675888D4E4747725A9d3c9B3f63AcD token-manager --app-init 
  ⚠ App could not be initialized, check the --app-init flag. Functions protected behind the ACL will not work until the app is initialized
  ```
 
-*YOUR TOKEN MANAGER ADDRESS:* 0x3Ec5e6239A90332A13155F5d7382E0DB70C36A8a
-
 ## Getting the token-manager address
 
 ```bash
@@ -78,24 +84,30 @@ dao apps <dao-address> --all
 ```
 
 ```bash
-dao apps 0x9934E6c917675888D4E4747725A9d3c9B3f63AcD --all --environment aragon:rinkeby
+dao apps $ARAGON_DAO_ADDRESS --all --environment aragon:rinkeby
  ✔ Inspecting DAO
  ✔ Fetching permissionless apps
- ✔ Successfully fetched DAO apps for 0x9934E6c917675888D4E4747725A9d3c9B3f63AcD
+ ✔ Successfully fetched DAO apps for 0x39044aA1C2A8F5D060502cF0340eFa8d0fdDbf07
 ┌────────┬────────────────────────────────────────────┬───────────────────┐
 │ App    │ Proxy address                              │ Content           │
 ├────────┼────────────────────────────────────────────┼───────────────────┤
-│ kernel │ 0x9934E6c917675888D4E4747725A9d3c9B3f63AcD │ (No UI available) │
+│ kernel │ 0x39044aA1C2A8F5D060502cF0340eFa8d0fdDbf07 │ (No UI available) │
 ├────────┼────────────────────────────────────────────┼───────────────────┤
-│ acl    │ 0x03ab5a63543bef42601b103ee92f26097066c029 │ (No UI available) │
+│ acl    │ 0x3b73f998f9c0b697231b0daf9920d9a2bc55a96e │ (No UI available) │
 ├────────┼────────────────────────────────────────────┼───────────────────┤
-│ evmreg │ 0x80325a68af95ec399739b8013af33202db8053c7 │ (No UI available) │
+│ evmreg │ 0x70c55315e2e7217d5dc2974c8a0ef05c6d3bb6ba │ (No UI available) │
 └────────┴────────────────────────────────────────────┴───────────────────┘
 ┌────────────────────┬────────────────────────────────────────────┐
 │ Permissionless app │ Proxy address                              │
 ├────────────────────┼────────────────────────────────────────────┤
-│ token-manager      │ 0xf14BeEDe08058f3E4D4F8Ae8038CfdC02C492112 │
+│ token-manager      │ 0x829923fb777Cf60518b4178604124B6620d3aEC4 │
 └────────────────────┴────────────────────────────────────────────┘
+```
+
+*YOUR TOKEN MANAGER ADDRESS:* 0x829923fb777Cf60518b4178604124B6620d3aEC4
+
+```bash
+export ARAGON_TOKEN_MANAGER=0x829923fb777Cf60518b4178604124B6620d3aEC4
 ```
 
 ## Setting the token-manager instances as the token-controller on our token
@@ -105,11 +117,11 @@ dao token change-controller <token-address> <token-manager-address>
 ```
 
 ```bash
-dao token change-controller 0xEE1cD10767c26F92634DaA26cC639A4bbb192E10 0xf14BeEDe08058f3E4D4F8Ae8038CfdC02C492112 --environment aragon:rinkeby
+dao token change-controller $ARAGON_TOKEN_ADDRESS $ARAGON_TOKEN_MANAGER --environment aragon:rinkeby
  ✔ Changing the MiniMe token controller
- ✔ Successfully changed the controller of 0xEE1cD10767c26F92634DaA26cC639A4bbb192E10 to 0xf14BeEDe08058f3E4D4F8Ae8038CfdC02C492112
- ℹ Transaction hash: 0x7cbd117d411e35eb92d849d19f01c76ebba857f8e27707c560649cff1dd18f6b
-```
+ ✔ Successfully changed the controller of 0xc592A9C6Fa048e0459C0433133bc6d40FcD68068 to 0x829923fb777Cf60518b4178604124B6620d3aEC4
+ ℹ Transaction hash: 0xb58bbd17ea28bfaa138a4dc14a8cd700f08a928442d6f7f2107a5c8ca2b78617
+ ```
 
 ## Create a permission for the token-manager
 
@@ -118,11 +130,11 @@ dao acl create <dao-address> <token-manager-address> MINT_ROLE <your-address> <y
 ```
 
 ```bash
-dao acl create 0x9934E6c917675888D4E4747725A9d3c9B3f63AcD 0xf14BeEDe08058f3E4D4F8Ae8038CfdC02C492112 MINT_ROLE 0xB5787893aF14f7F68ca54503bB2e23cf5b485951 0xe3D623E4b0902d3d0A578941527D7780849734d0 --environment aragon:rinkeby
+dao acl create $ARAGON_DAO_ADDRESS $ARAGON_TOKEN_MANAGER MINT_ROLE 0xB5787893aF14f7F68ca54503bB2e23cf5b485951 0xe3D623E4b0902d3d0A578941527D7780849734d0 --environment aragon:rinkeby
  ✔ Generating transaction
  ✔ Sending transaction
- ✔ Successfully executed: "Create a new permission granting 0xB5787893aF14f7F68ca54503bB2e23cf5b485951 the ability to perform actions of role 0x154c00819833dac601ee5ddded6fda79d9d8b506b911b3dbd54cdb95fe6c3686 on 0xf14BeEDe08058f3E4D4F8Ae8038CfdC02C492112 (setting 0xe3D623E4b0902d3d0A578941527D7780849734d0 as the permission manager)"
-```
+ ✔ Successfully executed: "Create a new permission granting 0xB5787893aF14f7F68ca54503bB2e23cf5b485951 the ability to perform actions of role 0x154c00819833dac601ee5ddded6fda79d9d8b506b911b3dbd54cdb95fe6c3686 on 0x829923fb777Cf60518b4178604124B6620d3aEC4 (setting 0xe3D623E4b0902d3d0A578941527D7780849734d0 as the permission manager)"
+ ```
 
 ## Initialize the token manager
 
@@ -131,11 +143,10 @@ dao exec <dao-address> <token-manager-address> initialize [token-address] false 
 ```
 
 ```bash
-dao exec 0x9934E6c917675888D4E4747725A9d3c9B3f63AcD 0xf14BeEDe08058f3E4D4F8Ae8038CfdC02C492112 initialize 0xEE1cD10767c26F92634DaA26cC639A4bbb192E10 false 1 --environment aragon:rinkeby
+dao exec $ARAGON_DAO_ADDRESS $ARAGON_TOKEN_MANAGER initialize $ARAGON_TOKEN_ADDRESS false 1 --environment aragon:rinkeby
  ✔ Generating transaction
- ✖ Sending transaction
-   → gas required exceeds allowance (7000000) or always failing transaction
- ✖ gas required exceeds allowance (7000000) or always failing transaction
+ ✔ Sending transaction
+ ✔ Successfully executed: "undefined"
 ```
 
 ## Go to the DAO
@@ -151,7 +162,7 @@ dao install <dao-address> voting --app-init-args [token-address] 600000000000000
 ```
 
 ```bash
-dao install 0x9934E6c917675888D4E4747725A9d3c9B3f63AcD voting --app-init-args 0xEE1cD10767c26F92634DaA26cC639A4bbb192E10 600000000000000000 250000000000000000 604800 --environment aragon:rinkeby
+dao install $ARAGON_DAO_ADDRESS voting --app-init-args $ARAGON_TOKEN_ADDRESS 600000000000000000 250000000000000000 604800 --environment aragon:rinkeby
  ✔ Fetching voting.aragonpm.eth@latest
  ↓ Checking installed version [skipped]
    → Installing the first instance of voting.aragonpm.eth in DAO
@@ -160,13 +171,22 @@ dao install 0x9934E6c917675888D4E4747725A9d3c9B3f63AcD voting --app-init-args 0x
  ⚠ After the app instance is created, you will need to assign permissions to it for it appear as an app in the DAO
 ```
 
-*YOUR VOTING ADDRESS:* 0x8C06aEBF29F20A2e09b32F5d44cEa49Db3EC2eE0
+*YOUR VOTING APP ADDRESS:* 0x8C06aEBF29F20A2e09b32F5d44cEa49Db3EC2eE0
+
+```bash
+export ARAGON_VOTING_APP_ADDRESS=0x8C06aEBF29F20A2e09b32F5d44cEa49Db3EC2eE0
+```
 
 ```bash
 dao acl create <dao-address> <voting-app-address> CREATE_VOTES_ROLE <token-manager-address> <voting-app-address>
 ```
 
-TO_COMPLETE
+```bash
+dao acl create $ARAGON_DAO_ADDRESS $ARAGON_VOTING_APP_ADDRESS CREATE_VOTES_ROLE $ARAGON_TOKEN_MANAGER $ARAGON_VOTING_APP_ADDRESS --environment aragon:rinkeby
+ ✔ Generating transaction
+ ✔ Sending transaction
+ ✔ Successfully executed: "Create a new permission granting 'Token Manager' the ability to perform actions of role 0xe7dcd7275292e064d090fbc5f3bd7995be23b502c1fed5cd94cfddbbdcd32bbc on 0x8C06aEBF29F20A2e09b32F5d44cEa49Db3EC2eE0 (setting 0x8C06aEBF29F20A2e09b32F5d44cEa49Db3EC2eE0 as the permission manager)"
+```
 
 # Adding a Vault and Finance instance
 
@@ -175,7 +195,7 @@ dao install <dao-address> vault
 ```
 
 ```bash
-dao install 0x9934E6c917675888D4E4747725A9d3c9B3f63AcD vault --environment aragon:rinkeby
+dao install $ARAGON_DAO_ADDRESS vault --environment aragon:rinkeby
  ✔ Fetching vault.aragonpm.eth@latest
  ↓ Checking installed version [skipped]
    → Installing the first instance of vault.aragonpm.eth in DAO
@@ -187,11 +207,15 @@ dao install 0x9934E6c917675888D4E4747725A9d3c9B3f63AcD vault --environment arago
 *YOUR VAULT-ADDRESS:* 0x31637C26Ab193cf12402F3FC5265ae916a1cFb89
 
 ```bash
+export ARAGON_VAULT_ADDRESS=0x31637C26Ab193cf12402F3FC5265ae916a1cFb89
+```
+
+```bash
 dao install <dao-address> finance --app-init-args [vault-address] 2592000
 ```
 
 ```bash
-dao install 0x9934E6c917675888D4E4747725A9d3c9B3f63AcD finance --app-init-args 0x31637C26Ab193cf12402F3FC5265ae916a1cFb89 2592000 --environment aragon:rinkeby
+dao install $ARAGON_DAO_ADDRESS finance --app-init-args $ARAGON_VAULT_ADDRESS 2592000 --environment aragon:rinkeby
  ✔ Fetching finance.aragonpm.eth@latest
  ↓ Checking installed version [skipped]
    → Installing the first instance of finance.aragonpm.eth in DAO
@@ -203,11 +227,15 @@ dao install 0x9934E6c917675888D4E4747725A9d3c9B3f63AcD finance --app-init-args 0
 *YOUR FINANCE ADDRESS:* 0x084Db627c7c7714Dc7BeFA8521cb93696DE84fF3
 
 ```bash
+export ARAGON_FINANCE_ADDRESS=0x084Db627c7c7714Dc7BeFA8521cb93696DE84fF3
+```
+
+```bash
 dao acl create <dao-address> <vault-address> TRANSFER_ROLE <finance-address> <voting-address>
 ```
 
 ```bash
-dao acl create 0x9934E6c917675888D4E4747725A9d3c9B3f63AcD 0x31637C26Ab193cf12402F3FC5265ae916a1cFb89 TRANSFER_ROLE 0x084Db627c7c7714Dc7BeFA8521cb93696DE84fF3 0x8C06aEBF29F20A2e09b32F5d44cEa49Db3EC2eE0 --environment aragon:rinkeby
+dao acl create $ARAGON_DAO_ADDRESS $ARAGON_VAULT_ADDRESS TRANSFER_ROLE $ARAGON_FINANCE_ADDRESS $ARAGON_VOTING_APP_ADDRESS --environment aragon:rinkeby
  ✔ Generating transaction
  ✔ Sending transaction
  ✔ Successfully executed: "Create a new permission granting 0x084Db627c7c7714Dc7BeFA8521cb93696DE84fF3 the ability to perform actions of role 0x8502233096d909befbda0999bb8ea2f3a6be3c138b9fbf003752a4c8bce86f6c on 0x31637C26Ab193cf12402F3FC5265ae916a1cFb89 (setting 0x8C06aEBF29F20A2e09b32F5d44cEa49Db3EC2eE0 as the permission manager)"
@@ -218,7 +246,7 @@ dao acl create <dao-address> <finance-address> CREATE_PAYMENTS_ROLE <voting-addr
 ```
 
 ```bash
-dao acl create 0x9934E6c917675888D4E4747725A9d3c9B3f63AcD 0x084Db627c7c7714Dc7BeFA8521cb93696DE84fF3 CREATE_PAYMENTS_ROLE 0x8C06aEBF29F20A2e09b32F5d44cEa49Db3EC2eE0 0x8C06aEBF29F20A2e09b32F5d44cEa49Db3EC2eE0 --environment aragon:rinkeby
+dao acl create $ARAGON_DAO_ADDRESS $ARAGON_FINANCE_ADDRESS CREATE_PAYMENTS_ROLE $ARAGON_VOTING_APP_ADDRESS $ARAGON_VOTING_APP_ADDRESS --environment aragon:rinkeby
  ✔ Generating transaction
  ✔ Sending transaction
  ✔ Successfully executed: "Create a new permission granting 0x8C06aEBF29F20A2e09b32F5d44cEa49Db3EC2eE0 the ability to perform actions of role 0x5de467a460382d13defdc02aacddc9c7d6605d6d4e0b8bd2f70732cae8ea17bc on 0x084Db627c7c7714Dc7BeFA8521cb93696DE84fF3 (setting 0x8C06aEBF29F20A2e09b32F5d44cEa49Db3EC2eE0 as the permission manager)"
@@ -229,8 +257,10 @@ dao acl create <dao-address> <finance-address> EXECUTE_PAYMENTS_ROLE <voting-add
 ```
 
 ```bash
-dao acl create 0x9934E6c917675888D4E4747725A9d3c9B3f63AcD 0x084Db627c7c7714Dc7BeFA8521cb93696DE84fF3 EXECUTE_PAYMENTS_ROLE 0x8C06aEBF29F20A2e09b32F5d44cEa49Db3EC2eE0 0x8C06aEBF29F20A2e09b32F5d44cEa49Db3EC2eE0 --environment aragon:rinkeby
-...
+dao acl create $ARAGON_DAO_ADDRESS $ARAGON_FINANCE_ADDRESS EXECUTE_PAYMENTS_ROLE $ARAGON_VOTING_APP_ADDRESS $ARAGON_VOTING_APP_ADDRESS --environment aragon:rinkeby
+ ✔ Generating transaction
+ ✔ Sending transaction
+ ✔ Successfully executed: "Create a new permission granting 0x8C06aEBF29F20A2e09b32F5d44cEa49Db3EC2eE0 the ability to perform actions of role 0x563165d3eae48bcb0a092543ca070d989169c98357e9a1b324ec5da44bab75fd on 0x084Db627c7c7714Dc7BeFA8521cb93696DE84fF3 (setting 0x8C06aEBF29F20A2e09b32F5d44cEa49Db3EC2eE0 as the permission manager)"
 ```
 
 ```bash
@@ -238,7 +268,7 @@ dao acl create <dao-address> <finance-address> MANAGE_PAYMENTS_ROLE <voting-addr
 ```
 
 ```bash
-dao acl create 0x9934E6c917675888D4E4747725A9d3c9B3f63AcD 0x084Db627c7c7714Dc7BeFA8521cb93696DE84fF3 MANAGE_PAYMENTS_ROLE 0x8C06aEBF29F20A2e09b32F5d44cEa49Db3EC2eE0 0x8C06aEBF29F20A2e09b32F5d44cEa49Db3EC2eE0 --environment aragon:rinkeby
+dao acl create $ARAGON_DAO_ADDRESS $ARAGON_FINANCE_ADDRESS MANAGE_PAYMENTS_ROLE $ARAGON_VOTING_APP_ADDRESS $ARAGON_VOTING_APP_ADDRESS --environment aragon:rinkeby
  ✔ Generating transaction
  ✔ Sending transaction
  ✔ Successfully executed: "Create a new permission granting 0x8C06aEBF29F20A2e09b32F5d44cEa49Db3EC2eE0 the ability to perform actions of role 0x30597dd103acfaef0649675953d9cb22faadab7e9d9ed57acc1c429d04b80777 on 0x084Db627c7c7714Dc7BeFA8521cb93696DE84fF3 (setting 0x8C06aEBF29F20A2e09b32F5d44cEa49Db3EC2eE0 as the permission manager)"
@@ -295,4 +325,3 @@ aragon dao apps 0x9934E6c917675888D4E4747725A9d3c9B3f63AcD --environment aragon:
 │ token-manager@v1.1.6 │ 0xf14beede08058f3e4d4f8ae8038cfdc02c492112 │ ipfs:QmNeEr4VTDFrMDVUR69xBA2Puy74CGwWtRzpvyAg2fuPpL │
 └──────────────────────┴────────────────────────────────────────────┴─────────────────────────────────────────────────────┘
 ```
-
