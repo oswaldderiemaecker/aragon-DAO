@@ -1,3 +1,23 @@
+# Reference
+
+https://hack.aragon.org/docs/guides-custom-deploy
+
+# General considerations
+
+For any deploy always remember to have in a separate terminal the IPFS daemon running, use aragon ipfs to start it.
+
+If you are testing locally:
+
+In a separate terminal run: aragon devchain
+If you are deploying to rinkeby:
+
+Add --environment aragon:rinkeby to each of these commands
+If you are deploying to mainnet:
+
+Add --environment aragon:mainnet to each of these commands
+
+The following is using the rinkeby environement.
+
 # Install the Aragon CLI
 
 ```bash
