@@ -40,7 +40,7 @@ dao new --environment aragon:rinkeby
 
 ```bash
 export ARAGON_DAO_ADDRESS=0x39044aA1C2A8F5D060502cF0340eFa8d0fdDbf07
-``
+```
 
 ## Creating a Membership Token
 
@@ -171,10 +171,33 @@ dao install $ARAGON_DAO_ADDRESS voting --app-init-args $ARAGON_TOKEN_ADDRESS 600
  ⚠ After the app instance is created, you will need to assign permissions to it for it appear as an app in the DAO
 ```
 
-*YOUR VOTING APP ADDRESS:* 0x8C06aEBF29F20A2e09b32F5d44cEa49Db3EC2eE0
+Get the Proxy address:
 
 ```bash
-export ARAGON_VOTING_APP_ADDRESS=0x8C06aEBF29F20A2e09b32F5d44cEa49Db3EC2eE0
+dao apps $ARAGON_DAO_ADDRESS --all --environment aragon:rinkeby
+✔ Inspecting DAO
+ ✔ Fetching permissionless apps
+ ✔ Successfully fetched DAO apps for 0x91D3713746269Af27B30f97Ed5Fb00B3a7D711CA
+┌──────────────────────┬────────────────────────────────────────────┬─────────────────────────────────────────────────────┐
+│ App                  │ Proxy address                              │ Content                                             │
+├──────────────────────┼────────────────────────────────────────────┼─────────────────────────────────────────────────────┤
+│ kernel               │ 0x91D3713746269Af27B30f97Ed5Fb00B3a7D711CA │ (No UI available)                                   │
+├──────────────────────┼────────────────────────────────────────────┼─────────────────────────────────────────────────────┤
+│ acl                  │ 0x42d97c1c58a77dd546363f4477aefbeec34cfce0 │ (No UI available)                                   │
+├──────────────────────┼────────────────────────────────────────────┼─────────────────────────────────────────────────────┤
+│ evmreg               │ 0x9dc7d91072905356f9fc81ad3c858b8ec54e37a2 │ (No UI available)                                   │
+├──────────────────────┼────────────────────────────────────────────┼─────────────────────────────────────────────────────┤
+│ token-manager@v1.1.6 │ 0x7d214e2f705aa056e831bcb9348cc935f4eb0150 │ ipfs:QmNeEr4VTDFrMDVUR69xBA2Puy74CGwWtRzpvyAg2fuPpL │
+└──────────────────────┴────────────────────────────────────────────┴─────────────────────────────────────────────────────┘
+┌────────────────────┬────────────────────────────────────────────┐
+│ Permissionless app │ Proxy address                              │
+├────────────────────┼────────────────────────────────────────────┤
+│ voting             │ 0x2e5c2E709f793dEf30267A742166e491A8E405E1 │
+└────────────────────┴────────────────────────────────────────────┘
+```
+
+```bash
+export ARAGON_VOTING_APP_ADDRESS=0x2e5c2E709f793dEf30267A742166e491A8E405E1
 ```
 
 ```bash
@@ -183,9 +206,31 @@ dao acl create <dao-address> <voting-app-address> CREATE_VOTES_ROLE <token-manag
 
 ```bash
 dao acl create $ARAGON_DAO_ADDRESS $ARAGON_VOTING_APP_ADDRESS CREATE_VOTES_ROLE $ARAGON_TOKEN_MANAGER $ARAGON_VOTING_APP_ADDRESS --environment aragon:rinkeby
- ✔ Generating transaction
- ✔ Sending transaction
- ✔ Successfully executed: "Create a new permission granting 'Token Manager' the ability to perform actions of role 0xe7dcd7275292e064d090fbc5f3bd7995be23b502c1fed5cd94cfddbbdcd32bbc on 0x8C06aEBF29F20A2e09b32F5d44cEa49Db3EC2eE0 (setting 0x8C06aEBF29F20A2e09b32F5d44cEa49Db3EC2eE0 as the permission manager)"
+✔ Generating transaction
+✔ Sending transaction
+✔ Successfully executed: "Create a new permission granting 'Token Manager' the ability to perform actions of role 0xe7dcd7275292e064d090fbc5f3bd7995be23b502c1fed5cd94cfddbbdcd32bbc on 0x2e5c2E709f793dEf30267A742166e491A8E405E1 (setting 0x2e5c2E709f793dEf30267A742166e491A8E405E1 as the permission manager)"
+```
+
+Get the Proxy address:
+
+```bash
+dao apps $ARAGON_DAO_ADDRESS --all --environment aragon:rinkeby
+✔ Inspecting DAO
+ ✔ Fetching permissionless apps
+ ✔ Successfully fetched DAO apps for 0x91D3713746269Af27B30f97Ed5Fb00B3a7D711CA
+┌──────────────────────┬────────────────────────────────────────────┬─────────────────────────────────────────────────────┐
+│ App                  │ Proxy address                              │ Content                                             │
+├──────────────────────┼────────────────────────────────────────────┼─────────────────────────────────────────────────────┤
+│ kernel               │ 0x91D3713746269Af27B30f97Ed5Fb00B3a7D711CA │ (No UI available)                                   │
+├──────────────────────┼────────────────────────────────────────────┼─────────────────────────────────────────────────────┤
+│ acl                  │ 0x42d97c1c58a77dd546363f4477aefbeec34cfce0 │ (No UI available)                                   │
+├──────────────────────┼────────────────────────────────────────────┼─────────────────────────────────────────────────────┤
+│ evmreg               │ 0x9dc7d91072905356f9fc81ad3c858b8ec54e37a2 │ (No UI available)                                   │
+├──────────────────────┼────────────────────────────────────────────┼─────────────────────────────────────────────────────┤
+│ token-manager@v1.1.6 │ 0x7d214e2f705aa056e831bcb9348cc935f4eb0150 │ ipfs:QmNeEr4VTDFrMDVUR69xBA2Puy74CGwWtRzpvyAg2fuPpL │
+├──────────────────────┼────────────────────────────────────────────┼─────────────────────────────────────────────────────┤
+│ voting@v1.1.7        │ 0x2e5c2e709f793def30267a742166e491a8e405e1 │ ipfs:QmTCYzgvrjtV4ETkhM3ZNgrVYNi2roXhNxCRmwsePNqL1B │
+└──────────────────────┴────────────────────────────────────────────┴─────────────────────────────────────────────────────┘
 ```
 
 # Adding a Vault and Finance instance
@@ -204,10 +249,14 @@ dao install $ARAGON_DAO_ADDRESS vault --environment aragon:rinkeby
  ⚠ After the app instance is created, you will need to assign permissions to it for it appear as an app in the DAO
 ```
 
-*YOUR VAULT-ADDRESS:* 0x31637C26Ab193cf12402F3FC5265ae916a1cFb89
+Get the Proxy address:
 
 ```bash
-export ARAGON_VAULT_ADDRESS=0x31637C26Ab193cf12402F3FC5265ae916a1cFb89
+dao apps $ARAGON_DAO_ADDRESS --all --environment aragon:rinkeby
+```
+
+```bash
+export ARAGON_VAULT_ADDRESS=0xA6f846b81DBc2f16ec3B0bbD6C8DAf6A92EC88DD
 ```
 
 ```bash
@@ -224,10 +273,14 @@ dao install $ARAGON_DAO_ADDRESS finance --app-init-args $ARAGON_VAULT_ADDRESS 25
  ⚠ After the app instance is created, you will need to assign permissions to it for it appear as an app in the DAO
 ```
 
-*YOUR FINANCE ADDRESS:* 0x084Db627c7c7714Dc7BeFA8521cb93696DE84fF3
+Get the Finance Proxy address:
 
 ```bash
-export ARAGON_FINANCE_ADDRESS=0x084Db627c7c7714Dc7BeFA8521cb93696DE84fF3
+dao apps $ARAGON_DAO_ADDRESS --all --environment aragon:rinkeby
+```
+
+```bash
+export ARAGON_FINANCE_ADDRESS=0x01B2da33e68E5C75B9bBFCe743b2B0C81cA7cf0b
 ```
 
 ```bash
@@ -281,25 +334,31 @@ dao acl <dao-address>
 ```
 
 ```bash
-dao acl 0x9934E6c917675888D4E4747725A9d3c9B3f63AcD --environment aragon:rinkeby
- ✔ Inspecting DAO Permissions
- ✔ Successfully fetched DAO apps for 0x9934E6c917675888D4E4747725A9d3c9B3f63AcD
+dao acl $ARAGON_DAO_ADDRESS --environment aragon:rinkeby
+✔ Inspecting DAO Permissions
+✔ Successfully fetched DAO apps for 0x91D3713746269Af27B30f97Ed5Fb00B3a7D711CA
 ┌────────────────────────┬─────────────────────────┬────────────────────────┬───────────────────────┐
 │ App                    │ Action                  │ Allowed entities       │ Manager               │
 ├────────────────────────┼─────────────────────────┼────────────────────────┼───────────────────────┤
-│ acl (0x03ab)           │ CREATE_PERMISSIONS_ROLE │ ✅ 0xb4124cEB345163... │   0xb4124cEB345163... │
+│ acl (0x42d9)           │ CREATE_PERMISSIONS_ROLE │ ✅  0xb4124cEB345163... │   0xb4124cEB345163... │
 ├────────────────────────┼─────────────────────────┼────────────────────────┼───────────────────────┤
-│ 0x9934e6c9176758...    │ APP_MANAGER_ROLE        │ ✅ 0xb4124cEB345163... │   0xb4124cEB345163... │
+│ 0x91d3713746269a...    │ APP_MANAGER_ROLE        │ ✅  0xb4124cEB345163... │   0xb4124cEB345163... │
 ├────────────────────────┼─────────────────────────┼────────────────────────┼───────────────────────┤
-│ token-manager (0xf14b) │ MINT_ROLE               │ ✅ 0xB5787893aF14f7... │   0xe3D623E4b0902d... │
+│ token-manager (0x7d21) │ MINT_ROLE               │ ✅  0xB5787893aF14f7... │   0xe3D623E4b0902d... │
 ├────────────────────────┼─────────────────────────┼────────────────────────┼───────────────────────┤
-│ 0x31637c26ab193c...    │ TRANSFER_ROLE           │ ✅ 0x084Db627c7c771... │   0x8C06aEBF29F20A... │
+│ voting (0x2e5c)        │ CREATE_VOTES_ROLE       │ ✅  0x7d214E2f705Aa0... │   0x2e5c2E709f793d... │
 ├────────────────────────┼─────────────────────────┼────────────────────────┼───────────────────────┤
-│ 0x084db627c7c771...    │ CREATE_PAYMENTS_ROLE    │ ✅ 0x8C06aEBF29F20A... │   0x8C06aEBF29F20A... │
+│ 0x31637c26ab193c...    │ TRANSFER_ROLE           │ ✅  0x084Db627c7c771... │   0x2e5c2E709f793d... │
 ├────────────────────────┼─────────────────────────┼────────────────────────┼───────────────────────┤
-│ 0x084db627c7c771...    │ EXECUTE_PAYMENTS_ROLE   │ ✅ 0x8C06aEBF29F20A... │   0x8C06aEBF29F20A... │
+│ vault (0xa6f8)         │ TRANSFER_ROLE           │ ✅  0x084Db627c7c771... │   0x2e5c2E709f793d... │
 ├────────────────────────┼─────────────────────────┼────────────────────────┼───────────────────────┤
-│ 0x084db627c7c771...    │ MANAGE_PAYMENTS_ROLE    │ ✅ 0x8C06aEBF29F20A... │   0x8C06aEBF29F20A... │
+│ 0x084db627c7c771...    │ CREATE_PAYMENTS_ROLE    │ ✅  0x2e5c2E709f793d... │   0x2e5c2E709f793d... │
+├────────────────────────┼─────────────────────────┼────────────────────────┼───────────────────────┤
+│ 0x084db627c7c771...    │ EXECUTE_PAYMENTS_ROLE   │ ✅  0x2e5c2E709f793d... │   0x2e5c2E709f793d... │
+├────────────────────────┼─────────────────────────┼────────────────────────┼───────────────────────┤
+│ 0x084db627c7c771...    │ MANAGE_PAYMENTS_ROLE    │ ✅  0x2e5c2E709f793d... │   0x2e5c2E709f793d... │
+├────────────────────────┼─────────────────────────┼────────────────────────┼───────────────────────┤
+│ finance (0x01b2)       │ MANAGE_PAYMENTS_ROLE    │ ✅  0x2e5c2E709f793d... │   0x2e5c2E709f793d... │
 └────────────────────────┴─────────────────────────┴────────────────────────┴───────────────────────┘
 ```
 
@@ -310,18 +369,28 @@ aragon dao apps <dao-address>
 ```
 
 ```bash
-aragon dao apps 0x9934E6c917675888D4E4747725A9d3c9B3f63AcD --environment aragon:rinkeby
- ✔ Inspecting DAO
- ✔ Successfully fetched DAO apps for 0x9934E6c917675888D4E4747725A9d3c9B3f63AcD
+aragon dao apps $ARAGON_DAO_ADDRESS --environment aragon:rinkeby
+✔ Inspecting DAO
+✔ Fetching permissionless apps
+✔ Successfully fetched DAO apps for 0x91D3713746269Af27B30f97Ed5Fb00B3a7D711CA
 ┌──────────────────────┬────────────────────────────────────────────┬─────────────────────────────────────────────────────┐
 │ App                  │ Proxy address                              │ Content                                             │
 ├──────────────────────┼────────────────────────────────────────────┼─────────────────────────────────────────────────────┤
-│ kernel               │ 0x9934E6c917675888D4E4747725A9d3c9B3f63AcD │ (No UI available)                                   │
+│ kernel               │ 0x91D3713746269Af27B30f97Ed5Fb00B3a7D711CA │ (No UI available)                                   │
 ├──────────────────────┼────────────────────────────────────────────┼─────────────────────────────────────────────────────┤
-│ acl                  │ 0x03ab5a63543bef42601b103ee92f26097066c029 │ (No UI available)                                   │
+│ acl                  │ 0x42d97c1c58a77dd546363f4477aefbeec34cfce0 │ (No UI available)                                   │
 ├──────────────────────┼────────────────────────────────────────────┼─────────────────────────────────────────────────────┤
-│ evmreg               │ 0x80325a68af95ec399739b8013af33202db8053c7 │ (No UI available)                                   │
+│ evmreg               │ 0x9dc7d91072905356f9fc81ad3c858b8ec54e37a2 │ (No UI available)                                   │
 ├──────────────────────┼────────────────────────────────────────────┼─────────────────────────────────────────────────────┤
-│ token-manager@v1.1.6 │ 0xf14beede08058f3e4d4f8ae8038cfdc02c492112 │ ipfs:QmNeEr4VTDFrMDVUR69xBA2Puy74CGwWtRzpvyAg2fuPpL │
+│ token-manager@v1.1.6 │ 0x7d214e2f705aa056e831bcb9348cc935f4eb0150 │ ipfs:QmNeEr4VTDFrMDVUR69xBA2Puy74CGwWtRzpvyAg2fuPpL │
+├──────────────────────┼────────────────────────────────────────────┼─────────────────────────────────────────────────────┤
+│ voting@v1.1.7        │ 0x2e5c2e709f793def30267a742166e491a8e405e1 │ ipfs:QmTCYzgvrjtV4ETkhM3ZNgrVYNi2roXhNxCRmwsePNqL1B │
+├──────────────────────┼────────────────────────────────────────────┼─────────────────────────────────────────────────────┤
+│ vault@v2.0.1         │ 0xa6f846b81dbc2f16ec3b0bbd6c8daf6a92ec88dd │ ipfs:Qmf4n8SU86dkqep4cjcUG1jGsR9RNmXQToUSMAuUpTtWoS │
+├──────────────────────┼────────────────────────────────────────────┼─────────────────────────────────────────────────────┤
+│ finance@v1.1.5       │ 0x01b2da33e68e5c75b9bbfce743b2b0c81ca7cf0b │ ipfs:QmVFmiY9Ch82WCLToew3Xo6X2ngJxYoXhkHVy8Y18nYPvW │
 └──────────────────────┴────────────────────────────────────────────┴─────────────────────────────────────────────────────┘
+┌────────────────────┬───────────────┐
+│ Permissionless app │ Proxy address │
+└────────────────────┴───────────────┘
 ```
