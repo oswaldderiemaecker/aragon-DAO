@@ -155,7 +155,7 @@ dao exec $ARAGON_DAO_ADDRESS $ARAGON_TOKEN_MANAGER initialize $ARAGON_TOKEN_ADDR
 
 Find your DAO UI here: https://<network>.aragon.org/#/<DAO Address>
 
-https://rinkeby.aragon.org/#/0x9934E6c917675888D4E4747725A9d3c9B3f63AcD/
+https://rinkeby.aragon.org/#/0x91D3713746269Af27B30f97Ed5Fb00B3a7D711CA/
 
 # Adding a Voting instance
 
