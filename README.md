@@ -16,7 +16,7 @@ dao new --environment aragon:rinkeby
  ✔ Created DAO: 0x9934E6c917675888D4E4747725A9d3c9B3f63AcD
 ```
 
-YOUR DAO ADDRESS: 0x9934E6c917675888D4E4747725A9d3c9B3f63AcD
+*YOUR DAO ADDRESS:* 0x9934E6c917675888D4E4747725A9d3c9B3f63AcD
 
 ## Creating a Membership Token
 
@@ -30,7 +30,7 @@ dao token new "Member" "MBR" 0
  ℹ Token factory transaction hash: 0x806eeace2af41f70f445e37ae01818103d327c659af2d0ac39389e533e9de6c6
 ```
 
-YOUR TOKEN ADDRESS: 0xEE1cD10767c26F92634DaA26cC639A4bbb192E10
+*YOUR TOKEN ADDRESS:* 0xEE1cD10767c26F92634DaA26cC639A4bbb192E10
 
 ## Deploy the Token-Manager Instance
 
@@ -49,7 +49,7 @@ dao install 0x9934E6c917675888D4E4747725A9d3c9B3f63AcD token-manager --app-init 
  ⚠ App could not be initialized, check the --app-init flag. Functions protected behind the ACL will not work until the app is initialized
  ```
 
-YOUR TOKEN MANAGER ADDRESS: 0x3Ec5e6239A90332A13155F5d7382E0DB70C36A8a
+*YOUR TOKEN MANAGER ADDRESS:* 0x3Ec5e6239A90332A13155F5d7382E0DB70C36A8a
 
 ## Getting the token-manager address
 
@@ -140,7 +140,7 @@ dao install 0x9934E6c917675888D4E4747725A9d3c9B3f63AcD voting --app-init-args 0x
  ⚠ After the app instance is created, you will need to assign permissions to it for it appear as an app in the DAO
 ```
 
-YOUR VOTING ADDRESS: 0x8C06aEBF29F20A2e09b32F5d44cEa49Db3EC2eE0
+*YOUR VOTING ADDRESS:* 0x8C06aEBF29F20A2e09b32F5d44cEa49Db3EC2eE0
 
 ```bash
 dao acl create <dao-address> <voting-app-address> CREATE_VOTES_ROLE <token-manager-address> <voting-app-address>
@@ -164,7 +164,7 @@ dao install 0x9934E6c917675888D4E4747725A9d3c9B3f63AcD vault --environment arago
  ⚠ After the app instance is created, you will need to assign permissions to it for it appear as an app in the DAO
 ```
 
- VAULT-ADDRESS: 0x31637C26Ab193cf12402F3FC5265ae916a1cFb89
+*YOUR VAULT-ADDRESS:* 0x31637C26Ab193cf12402F3FC5265ae916a1cFb89
 
 ```bash
 dao install <dao-address> finance --app-init-args [vault-address] 2592000
@@ -180,7 +180,7 @@ dao install 0x9934E6c917675888D4E4747725A9d3c9B3f63AcD finance --app-init-args 0
  ⚠ After the app instance is created, you will need to assign permissions to it for it appear as an app in the DAO
 ```
 
-FINANCE ADDRESS: 0x084Db627c7c7714Dc7BeFA8521cb93696DE84fF3
+*YOUR FINANCE ADDRESS:* 0x084Db627c7c7714Dc7BeFA8521cb93696DE84fF3
 
 ```bash
 dao acl create <dao-address> <vault-address> TRANSFER_ROLE <finance-address> <voting-address>
@@ -237,19 +237,19 @@ dao acl 0x9934E6c917675888D4E4747725A9d3c9B3f63AcD --environment aragon:rinkeby
 ┌────────────────────────┬─────────────────────────┬────────────────────────┬───────────────────────┐
 │ App                    │ Action                  │ Allowed entities       │ Manager               │
 ├────────────────────────┼─────────────────────────┼────────────────────────┼───────────────────────┤
-│ acl (0x03ab)           │ CREATE_PERMISSIONS_ROLE │ ✅  0xb4124cEB345163... │   0xb4124cEB345163... │
+│ acl (0x03ab)           │ CREATE_PERMISSIONS_ROLE │ ✅ 0xb4124cEB345163... │   0xb4124cEB345163... │
 ├────────────────────────┼─────────────────────────┼────────────────────────┼───────────────────────┤
-│ 0x9934e6c9176758...    │ APP_MANAGER_ROLE        │ ✅  0xb4124cEB345163... │   0xb4124cEB345163... │
+│ 0x9934e6c9176758...    │ APP_MANAGER_ROLE        │ ✅ 0xb4124cEB345163... │   0xb4124cEB345163... │
 ├────────────────────────┼─────────────────────────┼────────────────────────┼───────────────────────┤
-│ token-manager (0xf14b) │ MINT_ROLE               │ ✅  0xB5787893aF14f7... │   0xe3D623E4b0902d... │
+│ token-manager (0xf14b) │ MINT_ROLE               │ ✅ 0xB5787893aF14f7... │   0xe3D623E4b0902d... │
 ├────────────────────────┼─────────────────────────┼────────────────────────┼───────────────────────┤
-│ 0x31637c26ab193c...    │ TRANSFER_ROLE           │ ✅  0x084Db627c7c771... │   0x8C06aEBF29F20A... │
+│ 0x31637c26ab193c...    │ TRANSFER_ROLE           │ ✅ 0x084Db627c7c771... │   0x8C06aEBF29F20A... │
 ├────────────────────────┼─────────────────────────┼────────────────────────┼───────────────────────┤
-│ 0x084db627c7c771...    │ CREATE_PAYMENTS_ROLE    │ ✅  0x8C06aEBF29F20A... │   0x8C06aEBF29F20A... │
+│ 0x084db627c7c771...    │ CREATE_PAYMENTS_ROLE    │ ✅ 0x8C06aEBF29F20A... │   0x8C06aEBF29F20A... │
 ├────────────────────────┼─────────────────────────┼────────────────────────┼───────────────────────┤
-│ 0x084db627c7c771...    │ EXECUTE_PAYMENTS_ROLE   │ ✅  0x8C06aEBF29F20A... │   0x8C06aEBF29F20A... │
+│ 0x084db627c7c771...    │ EXECUTE_PAYMENTS_ROLE   │ ✅ 0x8C06aEBF29F20A... │   0x8C06aEBF29F20A... │
 ├────────────────────────┼─────────────────────────┼────────────────────────┼───────────────────────┤
-│ 0x084db627c7c771...    │ MANAGE_PAYMENTS_ROLE    │ ✅  0x8C06aEBF29F20A... │   0x8C06aEBF29F20A... │
+│ 0x084db627c7c771...    │ MANAGE_PAYMENTS_ROLE    │ ✅ 0x8C06aEBF29F20A... │   0x8C06aEBF29F20A... │
 └────────────────────────┴─────────────────────────┴────────────────────────┴───────────────────────┘
 ```
 
