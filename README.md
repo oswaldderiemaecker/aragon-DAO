@@ -1,3 +1,11 @@
+# What is Aragon
+
+Aragon is a project to empower freedom by creating tools for decentralized governance.
+
+These tools help people freely organize without borders or intermediaries. Instead of bureaucracy, subjectivity, and trust, smart contracts have opened the door to experiment with governance at the speed of software.
+
+The Aragon stack helps you develop software for human organization. From the smart contracts to the user interface, Aragon takes care of the most important pieces of infrastructure to deliver censorship-resistant, decentralized and upgradeable apps.
+
 # Reference
 
 https://hack.aragon.org/docs/guides-custom-deploy
@@ -36,8 +44,6 @@ dao new --environment aragon:rinkeby
  ✔ Created DAO: 0x39044aA1C2A8F5D060502cF0340eFa8d0fdDbf07
 ```
 
-*YOUR DAO ADDRESS:* 0x39044aA1C2A8F5D060502cF0340eFa8d0fdDbf07
-
 ```bash
 export ARAGON_DAO_ADDRESS=0x39044aA1C2A8F5D060502cF0340eFa8d0fdDbf07
 ```
@@ -53,8 +59,6 @@ dao token new "Member" "MBR" 0 --environment aragon:rinkeby
  ✔ Successfully deployed the token factory at 0x5c6A795C42a041Ebfd7Fb2AEB560b8D56351f479
  ℹ Token factory transaction hash: 0x1b727af2dacf1bf83612d93ded107f648b2b4affd639c8c8fc7df4cd6e0ba2ac
 ```
-
-*YOUR TOKEN ADDRESS:* 0xc592A9C6Fa048e0459C0433133bc6d40FcD68068
 
 ```bash
 export ARAGON_TOKEN_ADDRESS=0xc592A9C6Fa048e0459C0433133bc6d40FcD68068
@@ -103,8 +107,6 @@ dao apps $ARAGON_DAO_ADDRESS --all --environment aragon:rinkeby
 │ token-manager      │ 0x829923fb777Cf60518b4178604124B6620d3aEC4 │
 └────────────────────┴────────────────────────────────────────────┘
 ```
-
-*YOUR TOKEN MANAGER ADDRESS:* 0x829923fb777Cf60518b4178604124B6620d3aEC4
 
 ```bash
 export ARAGON_TOKEN_MANAGER=0x829923fb777Cf60518b4178604124B6620d3aEC4
